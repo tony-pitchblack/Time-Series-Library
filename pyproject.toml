@@ -1,0 +1,43 @@
+[build-system]
+# Explicitly include setuptools and wheel to ensure metadata hooks run cleanly
+requires = [
+    "hatchling>=1.19.2",  # latest stable Hatchling
+    "setuptools>=61.0",   # for PEP 621 compatibility
+    "wheel"               # to build wheel artifacts
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "time-series-library"
+version = "0.1.0"
+description = "Time Series Library"
+# Include your README as the long description
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "einops",
+    "local-attention",
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "patool",
+    "reformer-pytorch",
+    "scikit-learn",
+    "scipy",
+    "sktime",
+    "sympy",
+    "torch",
+    "tqdm",
+    "PyWavelets"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "isort"
+]
+
+[tool.hatch.build]
+# Ensure all your package sources are included; adjust pattern if using src layout
+include = ["time_series_library/**", "README.md"]
